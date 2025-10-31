@@ -1,0 +1,15 @@
+# IDE and .directories
+.ansible/
+.vscode/
+
+# Secrets file
+config/secrets.env
+
+# Ansible vault file
+ansible/inventory/group_vars/all/vault.yml
+
+# Terraform files
+terraform/*/.terraform/
+terraform/*/*.tfstate
+terraform/*/*.tfstate.backup
+terraform/*/*.lock.*

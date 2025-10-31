@@ -1,0 +1,11 @@
+### == Provisioning Playbook == ###
+#                                 #
+# Run only once after OS install  #
+#                                 #
+### =========================== ###
+
+---
+- name: Initial provisioning
+  import_playbook: 00-initial.yml
+- name: Base security
+  import_playbook: 10-base-security.yml

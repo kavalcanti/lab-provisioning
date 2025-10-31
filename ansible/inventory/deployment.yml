@@ -1,0 +1,24 @@
+---
+# Ansible Inventory - Auto-generated from Terraform
+# Generated: 2025-10-31 20:03:32
+
+all:
+  children:
+    servers:
+      hosts:
+        testvm:
+          # Initial Connection (used for first connection)
+          ansible_host: "172.20.0.135"
+          ansible_user: "{{ user_root }}"
+          ansible_port: "{{ ssh_port }}"
+          ansible_password: "{{ vault_root_password }}"
+          ansible_become_password: "{{ vault_devops_password }}"
+          
+          # Post-setup Connection
+          sys_hostname: "testvm"
+          
+      vars:
+        # Environment specific overrides
+        
+        docker_users:
+          - "{{ user_devops }}"
