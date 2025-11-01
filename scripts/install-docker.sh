@@ -20,14 +20,14 @@ if [[ "${VM_IP}" == "waiting for IP..." ]] || [[ -z "${VM_IP}" ]]; then
     exit 1
 fi
 
-echo "=== Securing VM ==="
+echo "=== Installing Docker ==="
 echo "VM Name: ${VM_NAME}"
 echo "VM IP:   ${VM_IP}"
 echo ""
 
 cd "${PROJECT_ROOT}/ansible"
 
-ansible-playbook playbooks/90-security.yml \
+ansible-playbook playbooks/20-docker.yml \
   -i inventory/deployment.yml \
   --ask-vault-pass
   
