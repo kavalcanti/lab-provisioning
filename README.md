@@ -1,3 +1,7 @@
+# Multilanguage README Pattern
+[![en](https://img.shields.io/badge/lang-en-red.svg)](https://github.com/kavalcanti/lab-provisioning/blob/main/README.md)
+[![pt-br](https://img.shields.io/badge/lang-pt--br-green.svg)](https://github.com/kavalcanti/lab-provisioning/blob/main/README.pt-br.md)
+
 # What is this repo?
 
 I have been homelabbing for a while and use proxmox to host VMs for my projects.

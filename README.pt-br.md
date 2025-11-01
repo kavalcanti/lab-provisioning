@@ -1,3 +1,5 @@
+[![en](https://img.shields.io/badge/lang-en-red.svg)](https://github.com/kavalcanti/lab-provisioning/blob/main/README.md)
+
 # O que é esse repo?
 
 Eu faço homelab há alguns anos e uso proxmox para subir VMs para os meus
