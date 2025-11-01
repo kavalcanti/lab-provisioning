@@ -3,22 +3,10 @@ set -e
 
 # Determine project root
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-PROJECT_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
+source "${SCRIPT_DIR}/lib/common.sh"
 
-echo "=== Loading Configuration ==="
-# Source configuration files
-source "${PROJECT_ROOT}/config/infrastructure.env"
-source "${PROJECT_ROOT}/config/secrets.env"
-
-echo "=== Loading SSH Agent ==="
-eval "$(ssh-agent -s)"
-ssh-add "${PROXMOX_SSH_KEY}"
-
-echo "✓ Configuration loaded"
-echo ""
-
-# Change to terraform directory
-cd "${PROJECT_ROOT}/terraform/make-debian"
+get_project_root
+load_config
 
 echo "=== Running Terraform ==="
 terraform init
@@ -32,10 +20,7 @@ echo ""
 
 # Show the VM IP
 echo "=== VM Information ==="
-VM_IP=$(terraform output -raw vm_ip)
-VM_NAME=$(terraform output -raw vm_name)
+get_terraform_outputs
 echo "VM Name: ${VM_NAME}"
 echo "VM IP:   ${VM_IP}"
 echo ""
-echo "Next: Update Ansible inventory with:"
-echo "  ${SCRIPT_DIR}/generate-inventory.sh"

@@ -1,33 +1,18 @@
 #!/bin/bash
 set -e
 
-# Simple script to update Ansible inventory from Terraform outputs
+# Secure the VM after it has been provisioned
 
-# Determine project root
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-PROJECT_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
+source "${SCRIPT_DIR}/lib/common.sh"
 
-# Get Terraform outputs
-cd "${PROJECT_ROOT}/terraform/make-debian"
-
-VM_NAME=$(terraform output -raw vm_name)
-VM_IP=$(terraform output -raw vm_ip)
-
-# Check if we got an IP
-if [[ "${VM_IP}" == "waiting for IP..." ]] || [[ -z "${VM_IP}" ]]; then
-    echo "Error: VM IP not available yet"
-    echo "Wait a moment and try again"
-    exit 1
-fi
+get_project_root
+get_terraform_outputs
 
 echo "=== Securing VM ==="
 echo "VM Name: ${VM_NAME}"
 echo "VM IP:   ${VM_IP}"
 echo ""
 
-cd "${PROJECT_ROOT}/ansible"
-
-ansible-playbook playbooks/90-security.yml \
-  -i inventory/deployment.yml \
-  --ask-vault-pass
+run_ansible_playbook "playbooks/90-security.yml"
   
