@@ -1,4 +1,9 @@
 ---
+### ==== Docker Playbook ==== ###
+# Installs Docker and Docker Compose
+# Adds devops user to docker group
+# Configures Docker UFW after rules
+
 - name: Configure Docker
   hosts: servers
   become: true

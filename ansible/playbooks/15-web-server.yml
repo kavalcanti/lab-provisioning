@@ -1,3 +1,10 @@
+### ==== Web Server Playbook ==== ###
+# Installs nginx and certbot
+# Configures UFW default policies
+# Allows HTTP traffic
+# Allows HTTPS traffic
+# Configures UFW to allow web traffic
+
 ---
 - name: Configure Web Server
   hosts: servers

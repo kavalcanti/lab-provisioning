@@ -1,3 +1,12 @@
+### ==== Base Security Playbook ==== ###
+# Configures SSH port
+# Disables password authentication for SSH
+# Disables root login
+# Creates UFW rule for new SSH port
+# Creates UFW rule for old SSH port
+# Enables UFW with default deny
+# Coonfigures fail2ban and unattended-upgrades
+
 ---
 - name: Configure Base Security
   hosts: servers
